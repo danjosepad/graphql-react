@@ -16,10 +16,7 @@ export const Container = styled(Form)`
   width: 100%;
   max-width: 300px;
   display: flex;
-
-  & + & {
-    margin-left: 8px;
-  }
+  margin-right: 40px;
 `
 
 export const Input = styled.input<InputProps>`
@@ -27,21 +24,30 @@ export const Input = styled.input<InputProps>`
   height: 40px;
   padding: 8px 16px;
   font-size: 14px;
-  border: 1px solid black;
+  border: none;
+  text-align: center;
   transition: border 0.2s;
+  border-radius: 8px;
 
   ${({ error }) => error  ? `
     border: 1px solid red;
   ` : `
     border: 1px solid green;
   `};
+
+  &:focus {
+    background: white;
+    border: 1px solid black;
+  }
 `
 
 export const Button = styled.button<ButtonProps>`
   height: 40px;
   width: 40px;
   padding: 8px;
+  margin-left: 8px;
   border: none;
+  border-radius: 8px;
   ${({ error }) => error  ? `
     background: red;
   ` : `

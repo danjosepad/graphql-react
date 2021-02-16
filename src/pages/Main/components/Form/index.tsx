@@ -9,20 +9,20 @@ import { AiOutlineLoading } from 'react-icons/ai'
 import { Input, Button, Container } from './styles'
 
 interface FormProps {
+  city?: string
   onSubmit: (values: { name: string }) => void
   isLoading: boolean
 }
 
-const Form = ({ onSubmit, isLoading }: FormProps) => {
-  const initialValues = { name: '' }
+const Form = ({ city, onSubmit, isLoading }: FormProps) => {
+  const initialValues = { name: city ?? '' }
+  console.log('CITY', city)
   const validationSchema = yup.object({
     name: yup.string().required()
   })
 
 
   return (
-    <div>
-      Wat
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -38,17 +38,16 @@ const Form = ({ onSubmit, isLoading }: FormProps) => {
               value={values.name}
               error={!!errors.name}
             />
-            <Button type="submit" error={!!errors.name}>
-              {isLoading ? (
-                <AiOutlineLoading size={26} color="white" /> 
-              ) : (
-                <BsSearch size={26} color="white" />
-              )}  
-            </Button>
+           <Button type="submit">
+             {isLoading ? (
+               <AiOutlineLoading size={22} color="white" />
+             ) : (
+              <BsSearch size={22} color="white" />
+             )}
+           </Button>
         </Container>
         )}
       </Formik>
-    </div>
   )
 }
 

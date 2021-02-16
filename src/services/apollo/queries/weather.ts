@@ -1,10 +1,12 @@
 import { gql } from '@apollo/client'
 
-export const getWeatherByName = gql`
-  query{
-    getCityByName(name: "Barueri", config: {
-      lang: pt_br
-      units: metric
+export const GET_CITY_BY_NAME = gql`
+  query($name: String!) {
+    getCityByName(
+      name: $name, 
+      config: {
+        lang: pt_br
+        units: metric
     } ) {
       id
       name
